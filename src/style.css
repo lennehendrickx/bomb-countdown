@@ -1,0 +1,26 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background-color: #232525;
+	display: grid;
+	grid-template-rows: 1fr 2fr;
+	align-items: center;
+	justify-items: center;
+}
+
+.row {
+
+}
+
+.guess-status {
+    transition: background-color 2s ease-in-out;
+}
+
+.guess-error {
+    background-color: red;
+}
+
+.guess-success {
+    background-color: green;
+}
