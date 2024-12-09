@@ -10,88 +10,12 @@
 </head>
 <body class="guess-status">
 <div class="row">
-<div class="pin-code">
-    <input type="number" autofocus>
-    <input type="number">
-    <input type="number">
-    <input type="number">
-    <button>Check</button>
-</div>
+    <div id="pincode">
+    </div>
 </div>
 <div class="row">
-<div class="digital-watch">
-    <svg width="0" height="0" viewBox="0 0 0 0">
-        <defs>
-            <g id="unit-h">
-                <path d="M0 20 L20 40 L180 40 L200 20 L180 0 L20 0 Z"></path>
-            </g>
-            <g id="unit-v">
-                <path d="M20 0 L0 20 L0 180 L20 200 L40 180 L40 20 Z"></path>
-            </g>
-        </defs>
-    </svg>
-    <div class="hour">
-        <svg id="hour-1" class="num-0" width="130" height="240" viewBox="0 0 260 480">
-            <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
-            <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
-            <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
-            <use xlink:href="#unit-h" class="segment d" x="30" y="440"></use>
-            <use xlink:href="#unit-v" class="segment e" x="0" y="250"></use>
-            <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
-            <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
-        </svg>
-        <svg id="hour-2" class="num-0" width="130" height="240" viewBox="0 0 260 480">
-            <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
-            <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
-            <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
-            <use xlink:href="#unit-h" class="segment d" x="30" y="440"></use>
-            <use xlink:href="#unit-v" class="segment e" x="0" y="250"></use>
-            <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
-            <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
-        </svg>
+    <div id="countdown">
     </div>
-    <div class="minute">
-        <svg id="minute-1" class="num-0" width="130" height="240" viewBox="0 0 260 480">
-            <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
-            <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
-            <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
-            <use xlink:href="#unit-h" class="segment d" x="30" y="440"></use>
-            <use xlink:href="#unit-v" class="segment e" x="0" y="250"></use>
-            <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
-            <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
-        </svg>
-        <svg id="minute-2" class="num-0" width="130" height="240" viewBox="0 0 260 480">
-            <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
-            <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
-            <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
-            <use xlink:href="#unit-h" class="segment d" x="30" y="440"></use>
-            <use xlink:href="#unit-v" class="segment e" x="0" y="250"></use>
-            <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
-            <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
-        </svg>
-    </div>
-    <div class="second">
-        <svg id="second-1" class="num-0" width="130" height="240" viewBox="0 0 260 480">
-            <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
-            <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
-            <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
-            <use xlink:href="#unit-h" class="segment d" x="30" y="440"></use>
-            <use xlink:href="#unit-v" class="segment e" x="0" y="250"></use>
-            <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
-            <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
-        </svg>
-
-        <svg id="second-2" class="num-0" width="130" height="240" viewBox="0 0 260 480">
-            <use xlink:href="#unit-h" class="segment a" x="30" y="0"></use>
-            <use xlink:href="#unit-v" class="segment b" x="220" y="30"></use>
-            <use xlink:href="#unit-v" class="segment c" x="220" y="250"></use>
-            <use xlink:href="#unit-h" class="segment d" x="30" y="440"></use>
-            <use xlink:href="#unit-v" class="segment e" x="0" y="250"></use>
-            <use xlink:href="#unit-v" class="segment f" x="0" y="30"></use>
-            <use xlink:href="#unit-h" class="segment g" x="30" y="220"></use>
-        </svg>
-    </div>
-</div>
 </div>
 <script type="text/javascript" src="countdown/script.js"></script>
 <script type="text/javascript" src="pincode/script.js"></script>

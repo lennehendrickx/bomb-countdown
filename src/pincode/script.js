@@ -1,55 +1,9 @@
-const pincode = (function() {
-    class PincodeView extends EventTarget {
-
-       #container;
-
-        constructor() {
-            super();
-            this.#container = document.querySelector(".pin-code");
-            this.#container.addEventListener('keyup', ({srcElement: target}) => {
-                var myLength = target.value.length;
-
-                if (myLength >= 1) {
-                    var next = target;
-                    while (next = next.nextElementSibling) {
-                        if (next == null) break;
-                        if (next.tagName == "INPUT") {
-                            next.focus();
-                            break;
-                        }
-                    }
-                }
-
-                if (myLength === 0) {
-                    var next = target;
-                    while (next = next.previousElementSibling) {
-                        if (next == null) break;
-                        if (next.tagName == "INPUT") {
-                            next.focus();
-                            break;
-                        }
-                    }
-                }
-            }, false);
-            this.#container.addEventListener('keydown', ({srcElement: target}) => {
-                target.value = "";
-            }, false);
-            this.#container.addEventListener('click', ({srcElement: target}) => {
-                if (target.tagName === 'BUTTON') {
-                    const pincode = [...this.#container.children]
-                    .filter(child => child.tagName === 'INPUT')
-                    .map(input => input.value)
-                    .reduce((a, b) => a + b, '');
-                    this.dispatchEvent(new CustomEvent('guess-clicked', { detail: { pincode }}));
-                }
-            })
-        }
-    }
-
+const pincode = (function () {
     class PincodeModel extends EventTarget {
         #pincode
 
-        setup(pincode) {
+        constructor(pincode) {
+            super();
             this.#pincode = pincode;
         }
 
@@ -62,12 +16,63 @@ const pincode = (function() {
         }
     }
 
-    const view = new PincodeView();
-    view.addEventListener('guess-clicked', ({detail: {pincode}}) => {
-        model.guess(pincode);
-    });
-    const model = new PincodeModel({});
-    return model;
+    class PincodeView {
+
+        #parent;
+
+        constructor(parent, model) {
+            this.#parent = parent;
+            this.#parent.classList.add('pin-code');
+            this.#parent.innerHTML = `<input type="number" autofocus>
+                                <input type="number">
+                                <input type="number">
+                                <input type="number">
+                                <button>Check</button>`;
+
+            this.#parent.addEventListener('keyup', ({srcElement: target}) => {
+                if (target.value.length >= 1) {
+                    let next = target.nextElementSibling;
+                    while (next != null) {
+                        if (next.tagName === "INPUT") {
+                            next.focus();
+                            break;
+                        }
+                        next = next.nextElementSibling;
+                    }
+                } else if (target.value.length === 0) {
+                    let previous = target.previousElementSibling;
+                    while (previous != null) {
+                        if (previous.tagName === "INPUT") {
+                            previous.focus();
+                            break;
+                        }
+                        previous = previous.previousElementSibling;
+                    }
+                }
+            }, false);
+            this.#parent.addEventListener('keydown', ({srcElement: target}) => {
+                target.value = "";
+            }, false);
+            this.#parent.addEventListener('click', ({srcElement: target}) => {
+                if (target.tagName === 'BUTTON') {
+                    const pincode = [...this.#parent.children]
+                        .filter(child => child.tagName === 'INPUT')
+                        .map(input => input.value)
+                        .reduce((a, b) => a + b, '');
+                    model.guess(pincode);
+                }
+            });
+
+        }
+    }
+
+    return {
+        init(parent, pincode) {
+            const model = new PincodeModel(pincode);
+            new PincodeView(parent, model);
+            return model;
+        }
+    };
 
 })()
 

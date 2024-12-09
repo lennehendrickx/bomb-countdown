@@ -1,15 +1,17 @@
 playSound('assets/mixkit-tick-tock-clock-close-up-1059.wav', true);
 
-countdown.start(1200);
-countdown.addEventListener('completed', showGuessError)
+const countdownModel = countdown.init(document.getElementById('countdown'));
+countdownModel.start(1200);
+countdownModel.addEventListener('completed', showGuessError);
 
-pincode.setup('4567');
-pincode.addEventListener('pincode-guessed-correctly', () => {
+const pincodeModel = pincode.init(
+    document.getElementById('pincode'),
+    '1234');
+pincodeModel.addEventListener('pincode-guessed-correctly', () => {
     showGuessSuccess();
-    countdown.stop();
+    countdownModel.stop();
 })
-
-pincode.addEventListener('pincode-guessed-incorrectly', () => {
+pincodeModel.addEventListener('pincode-guessed-incorrectly', () => {
     showGuessError();
     setTimeout(hideGuessError, 2000);
 })
